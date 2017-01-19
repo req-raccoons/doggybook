@@ -12,6 +12,20 @@ app.use(express.static('client'));
 app.use(bodyParser.json());
 
 
+// WIP
+// app.post('/signup', );
+// app.get('/signup', );
+//
+// app.post('/signup', );
+// app.get('/signup', );
+
+// app.post();
+// app.get();
+//
+// app.post();
+// app.get();
+//
+
 app.listen(port, function() {
   console.log("Server listening on port " + port);
 });
