@@ -7,25 +7,31 @@ angular.module('doggyBook', [
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
     .when('/landing', {
-
+      templateUrl: 'index.html',
+      controller: 'LandingController'
     })
     .when('/signin', {
-      templateUrl: 'app/auth/signin.html',
+      templateUrl: 'auth/signin.html',
       controller: 'AuthController'
     })
     .when('/signup', {
-      templateUrl: 'app/auth/signup.html',
+      templateUrl: 'auth/signin.html',
       controller: 'AuthController'
     })
     .when('/profile', {
-
+      templateUrl: 'profile/profile.html',
+      controller: 'ProfController',
+      authenticate: true
     })
     .when('/search'), {
-
+      templateUrl: 'search/search.html',
+      controller: 'SearchController',
+      authenticate: true
     })
     .otherwise({
       redirectTo: '/landing'
     });
+
    $httpProvider.interceptors.push('AttachTokens');
 })
 .factory('AttachTokens', function ($window) {
@@ -50,3 +56,4 @@ angular.module('doggyBook', [
     }
   });
 });
+
