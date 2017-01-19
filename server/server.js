@@ -2,8 +2,8 @@ console.log('in server.js');
 
 var express = require('express');
 var bodyParser = require('body-parser');
-var routes = require('./routes');
 
+var routes = require('./routes');
 var app = express();
 
 var port = process.env.PORT || 8000;
