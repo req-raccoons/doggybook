@@ -1,0 +1,25 @@
+{
+  "name": "doggybook",
+  "version": "1.0.0",
+  "description": "\"Connecting dogs with walkers, book your dog walker!\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcfungster/doggybook.git"
+  },
+  "keywords": [
+    "dogs",
+    "dog",
+    "walker",
+    "dog-walking"
+  ],
+  "author": "req.raccoons",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mcfungster/doggybook/issues"
+  },
+  "homepage": "https://github.com/mcfungster/doggybook#readme"
+}
