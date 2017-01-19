@@ -17,6 +17,7 @@ db.knex.schema.hasTable('users')
       user.increments('id').primary();
       user.string('email', 100).unique();
       user.string('password', 100);
+      user.string('name', 100);
       user.boolean('isDog');
       user.timestamps();
     }).then(function(table) {
