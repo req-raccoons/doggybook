@@ -2,7 +2,7 @@ console.log('in server.js');
 
 var express = require('express');
 var bodyParser = require('body-parser');
-var routes = require('./routes/routes');
+var routes = require('./routes');
 
 var app = express();
 
