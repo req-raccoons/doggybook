@@ -1,4 +1,31 @@
 <div id='profile'>
   <h1>Profile</h1>
+  <!-- nav below only includes landing & search; consider adding signout & nav to your profile -->
+  <nav class="navigation">
+    <ul>
+      <li>
+        <a href="#/landing">Links</a>
+      </li>
+      <li>
+        <a href="#/search">Shorten</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<!-- the div below will contain all of the info for an individual's profile -->
+<div class='profile'>
+  <!-- syntax and object info needs to be modelled out -->
+  <h2>{{profile.name}}</h2>
+  <img src={{profile.img}} />
+  <ul>
+    <!-- userType is either dog or walker -->
+    <li>{{profile.userType}}</li>
+    <li>{{profile.location}}</li>
+    <!-- walkType is one of walk, jog, or run -->
+    <li>{{profile.walkType}}</li>
+    <!-- walkTime is one of morning, afternoon, or night -->
+    <li>{{profile.walkTime}}</li>
+  </ul>
 
 </div>
