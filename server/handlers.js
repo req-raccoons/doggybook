@@ -49,8 +49,8 @@ exports.signup = function(req, res) {
   .fetch()
   .then(function(user) {
     // check if the provided username exists in the db
-    if (user)
-      return
+
+    if (user) {};
   });
     // if found: send back an error
     // if !found: register the user into TWO tables,
