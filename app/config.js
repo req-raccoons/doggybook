@@ -1,9 +1,10 @@
 var path = require('path');
 var knex = require('knex')({
-  client: 'mysql',
+  client: 'sqlite3',  // for local dev
+  // client: 'mysql',
   connection: {
     // may not be correct, check on during deploy
-    // filename: path.join(__dirname, './db')
+    filename: path.join(__dirname, '../db/doggysql.sqlite');
   },
   useNullAsDefault: true
 });
@@ -17,7 +18,6 @@ db.knex.schema.hasTable('users')
       user.increments('id').primary();
       user.string('email', 100).unique();
       user.string('password', 100);
-      user.string('name', 100);
       user.boolean('isDog');
       user.timestamps();
     }).then(function(table) {
