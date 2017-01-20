@@ -8,7 +8,6 @@ var Dogs = require('../app/collections/dogs');
 var Walkers = require('../app/collections/walkers');
 
 
-
 exports.signin = function(req, res) {
   console.log(req.body);
 

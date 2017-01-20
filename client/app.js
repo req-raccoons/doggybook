@@ -1,13 +1,15 @@
 angular.module('doggyBook', [
-  'doggyBook.auth', 'doggyBook.profile',
+  'doggyBook.auth',
+  'doggyBook.profile',
   'doggyBook.search',
+  'doggyBook.landing',
   'ngRoute'
 ])
 
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
     .when('/landing', {
-      templateUrl: 'index.html',
+      templateUrl: 'landing.html',
       controller: 'LandingController'
     })
     .when('/signin', {
@@ -24,7 +26,7 @@ angular.module('doggyBook', [
       authenticate: true
     })
     .when('/search'), {
-      templateUrl: 'search/search.html',
+      templateUrl: 'dashboard/search.html',
       controller: 'SearchController',
       authenticate: true
     })
@@ -56,4 +58,3 @@ angular.module('doggyBook', [
     }
   });
 });
-
