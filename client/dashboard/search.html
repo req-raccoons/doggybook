@@ -1,0 +1,16 @@
+<div>
+  <p> Enter price here!</p>
+  <form  ng-submit='getPlayers()'>
+    <input type='text' ng-model='search.price'
+    placeholder="Enter a desired price here..." />
+    <button type='submit'> Submit</button>
+  </form> <br />
+
+  <div>
+    <ul>
+      <li ng-repeat="users in usersAry|filter:search">
+        {{users}}
+      </li>
+    </ul>
+  </div>
+</div>
