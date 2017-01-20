@@ -41,10 +41,10 @@ db.knex.schema.hasTable('dogs')
   }
 });
 
-db.knex.schema.hasTable('walker')
+db.knex.schema.hasTable('walkers')
 .then(function(exists) {
   if (!exists) {
-    db.knex.schema.createTable('walker', function(walker) {
+    db.knex.schema.createTable('walkers', function(walker) {
       // structure of walker db object to be fleshed out further
       walker.increments('id').primary();
       walker.string('name');
