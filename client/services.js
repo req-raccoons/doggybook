@@ -5,7 +5,7 @@ angular.module('doggybook.services', [])
   var signin = function (user) {
     return $http({
       method: 'POST',
-      url: '/api/users/signin',
+      url: '/api/signin',
       data: user
     })
     .then(function (resp) {
@@ -14,9 +14,10 @@ angular.module('doggybook.services', [])
   };
 
   var signup = function (user) {
+    //note that we might need to combine this with Prof.newProf below
     return $http({
       method: 'POST',
-      url: '/api/users/signup',
+      url: '/api/signup',
       data: user
     })
     .then(function (resp) {
@@ -38,5 +39,41 @@ angular.module('doggybook.services', [])
     signup: signup,
     isAuth: isAuth,
     signout: signout
+  };
+});
+
+.factory('Prof', function ($http, $location, $window) {
+//prof factory skeleton ->
+  var newProf = function (prof) {
+    //this function should run with signup if we are inputting prof data there
+    return $http({
+      method: 'POST',
+      url: '/api/prof',
+      data: prof
+    })
+    .then(function (resp) {
+      return resp;
+    });
+  };
+
+  return {
+    newProf: newProf
+  };
+
+.factory('Search', function ($http, $location, $window) {
+
+  var dbQuery = function (query) {
+    return $http({
+      method: 'GET',
+      url: '/api/search',
+      data: query
+    })
+    .then(function (resp) {
+      return resp;
+    });
+  };
+
+  return {
+    dbQuery: dbQuery
   };
 });
