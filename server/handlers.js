@@ -1,8 +1,13 @@
 var request = require('request');
+
 var db = require('../app/config');
+var jwt = require('jwt-simple');
+
+
 var User = require('../app/models/user');
 var Dog = require('../app/models/dog');
 var Walker = require('../app/models/walker');
+
 var Users = require('../app/collections/users');
 var Dogs = require('../app/collections/dogs');
 var Walkers = require('../app/collections/walkers');
@@ -28,6 +33,8 @@ exports.signin = function(req, res) {
         if (match) {
           // if matched, redirect to landing page/dashboard and authenticate
           console.log('authenticate user + start a session');
+          res.redirect('/');
+
         } else {
           // if mismatched, send back to login page
           console.log('wrong password, redirecting to landing page or sign in page');
@@ -49,11 +56,27 @@ exports.signup = function(req, res) {
   .fetch()
   .then(function(user) {
     // check if the provided username exists in the db
-    if (user)
-      return
-  });
     // if found: send back an error
-    // if !found: register the user into TWO tables,
-        // the general user table and the dog/walker table
-        // the user table will take a hashed version of the desired pw.
+    if (user) {
+      console.log("username already exists");
+      res.redirect('/signup');
+    }
+    // otherwise create a new user
+    else {
+      new User({
+        //create a new knex/backbone model and insert into the db
+
+      });
+      new Dog({
+
+      });
+
+      new Walker({
+
+      });
+      // if !found: register the user into TWO tables,
+      // the general user table and the dog/walker table
+      // the user table will take a hashed version of the desired pw.
+    }
+  });
 }
