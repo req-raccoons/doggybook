@@ -49,7 +49,6 @@ exports.signup = function(req, res) {
   .fetch()
   .then(function(user) {
     // check if the provided username exists in the db
-
     if (user) {};
   });
     // if found: send back an error
