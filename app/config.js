@@ -1,11 +1,11 @@
-var path = require(path);
+var path = require('path');
 var knex = require('knex')({
-  client: 'mysql'
+  client: 'mysql',
   connection: {
     // may not be correct, check on during deploy
-    filename: path.join(__dirname, '../db/doggysql.mysql');
+    // filename: path.join(__dirname, './db')
   },
-  useNullAsDefault: true;
+  useNullAsDefault: true
 });
 
 var db = require('bookshelf')(knex);

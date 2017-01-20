@@ -1,3 +1,7 @@
+// currently no functionality - the page only has links to sign-in and signup
+// we might want to run a check here that checks if a user is signed in;
+  // if so, display a signout link instead of a signin link, also display links to profile & search
+
 angular.module('doggybook.landing', [])
 
 .controller('LandingController', function($scope,Players) {
