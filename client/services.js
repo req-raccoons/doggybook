@@ -62,7 +62,8 @@ angular.module('doggybook.services', [])
 
 .factory('Search', function ($http, $location, $window) {
 
-  var dbQuery = function (query) {
+  var getAllUsers = function () {
+    //this function should query all profs from DB, send to search.html and
     return $http({
       method: 'GET',
       url: '/api/search',
@@ -74,6 +75,25 @@ angular.module('doggybook.services', [])
   };
 
   return {
-    dbQuery: dbQuery
+    getAllUsers: getAllUsers
+  };
+});
+
+.factory('Landing', function ($http, $location, $window) {
+
+  var landingFunc = function () {
+    //this function should just allow for rerouting between other
+    return $http({
+      method: 'GET',
+      url: '/api/search',
+      data: query
+    })
+    .then(function (resp) {
+      return resp;
+    });
+  };
+
+  return {
+    landingFunc: landingFunc
   };
 });
