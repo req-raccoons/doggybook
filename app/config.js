@@ -1,12 +1,12 @@
-var path = require(path);
+var path = require('path');
 var knex = require('knex')({
   client: 'sqlite3',  // for local dev
   // client: 'mysql',
   connection: {
-    // may not be correct, check on during deploy
-    filename: path.join(__dirname, '../db/doggysql.sqlite');
+    // may not be correct, check on this during deploy
+    // filename: path.join(__dirname, '../db/doggysql.sqlite');
   },
-  useNullAsDefault: true;
+  useNullAsDefault: true
 });
 
 var db = require('bookshelf')(knex);
