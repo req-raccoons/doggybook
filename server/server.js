@@ -1,30 +1,23 @@
 console.log('in server.js');
+// this should actually be server-config.js
+// the server executes from the require call in index.js from the root directory
 
 var express = require('express');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes');
+var handle = require('./handlers');
 var app = express();
 
-var port = process.env.PORT || 8000;
 
+// middleware
 app.use(express.static('client'));
 app.use(bodyParser.json());
 
-// WIP
-// app.post('/signup', );
-// app.get('/signup', );
-//
-// app.post('/signup', );
-// app.get('/signup', );
+// app.post('/auth/signup', handle.signup);
+// app.post('/auth/signin', handle.signin);
+// app.get('/api/dogs', handle.dogSearch);
+// app.get('/api/walkers', handle.walkerSearch);
 
-// app.post();
-// app.get();
-//
-// app.post();
-// app.get();
-//
 
-app.listen(port, function() {
-  console.log("Server listening on port " + port);
-});
+module.exports = app;
