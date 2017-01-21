@@ -32,7 +32,7 @@ angular.module('doggyBook', [
       authenticate: true
     })
     .otherwise({
-      redirectTo: '/landing'
+      redirectTo: '/landings  '
     });
 
    $httpProvider.interceptors.push('AttachTokens');
