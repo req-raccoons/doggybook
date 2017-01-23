@@ -1,6 +1,6 @@
-angular.module('doggybook.search', [])
+angular.module('doggyBook.search', [])
 
-.controller('SearchController', function($scope,Players) {
+.controller('SearchController', function($scope, Players) {
   $scope.data = {};
   $scope.getUsers = function () {
     Search.getAllUsers()
