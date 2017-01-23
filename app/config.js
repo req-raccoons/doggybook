@@ -1,14 +1,9 @@
-var path = require('path');
-var knex = require('knex')({
-  client: 'sqlite3',  // for local dev
-  // client: 'mysql',
-  connection: {
-    // may not be correct, check on this during deploy
-    filename: path.join(__dirname, '../db/doggysql.sqlite')
-  },
-  useNullAsDefault: true
-});
+console.log('loading db...');
+var dbconfig = require('../env/db');
+// console.log(dbconfig);
 
+var path = require('path');
+var knex = require('knex')(dbconfig);
 var db = require('bookshelf')(knex);
 
 db.knex.schema.hasTable('users')
@@ -33,7 +28,7 @@ db.knex.schema.hasTable('dogs')
       // structure of dog db object to be fleshed out further
       dog.increments('id').primary();
       dog.string('name');
-      dog.integer('userId', 100);
+      dog.foreign('userId', 100).references('users.id');
       dog.timestamps();
     }).then(function(table) {
       console.log('Created Table: ', table);
@@ -48,7 +43,7 @@ db.knex.schema.hasTable('walkers')
       // structure of walker db object to be fleshed out further
       walker.increments('id').primary();
       walker.string('name');
-      walker.integer('userId', 100);
+      walker.foreign('userId', 100).references('users.id');
       walker.timestamps();
     }).then(function(table) {
       console.log('Created Table: ', table);
