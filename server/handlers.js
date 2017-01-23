@@ -13,11 +13,17 @@ var Walkers = require('../app/collections/walkers');
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 module.exports = {
   signin: function(req, res) {
     console.log('hello, handlers.js sign in is running!', req);
 >>>>>>> working through auth functionality. Currently slight issue with bodyparser.
+=======
+module.exports = {
+  signin: function(req, res) {
+    console.log('hello, handlers.js sign in is running!', req);
+>>>>>>> fixed merge conflicts
 
     var username = req.body.username;
     var password = req.body.password;
@@ -103,6 +109,9 @@ module.exports = {
   // },
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fixed merge conflicts
   new User({username: username})
   .fetch()
   .then(function(user) {
@@ -141,7 +150,6 @@ module.exports = {
           // create a new walker user following model/walker.js
         }
       });
-=======
 module.exports = {
   signin: function(req, res) {
     console.log('hello, handlers.js sign in is running!', req);
@@ -229,8 +237,11 @@ module.exports = {
   //     });
   // },
 
+<<<<<<< HEAD
 =======
 >>>>>>> working through auth functionality. Currently slight issue with bodyparser.
+=======
+>>>>>>> fixed merge conflicts
   checkAuth: function (req, res, next) {
     var token = req.headers['x-access-token'];
     if (!token) {
@@ -249,9 +260,12 @@ module.exports = {
           next(error);
         });
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> working through auth functionality. Currently slight issue with bodyparser.
 =======
 >>>>>>> working through auth functionality. Currently slight issue with bodyparser.
+=======
+>>>>>>> fixed merge conflicts
     }
   }
 };
