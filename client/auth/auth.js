@@ -17,7 +17,11 @@ angular.module('doggyBook.auth', [])
   $scope.signup = function () {
     Auth.signup($scope.user)
       .then(function (token) {
+<<<<<<< HEAD
         $window.localStorage.setItem('com.doggyBook', token);
+=======
+        $window.localStorage.setItem('com.doggybook', token);
+>>>>>>> Debugging various front-end issues including NgRoute installation, naming conventions, and controllers/factories.
         $location.path('/dashboard');
       })
       .catch(function (error) {
