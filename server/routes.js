@@ -9,11 +9,8 @@ var userController = require('./handlers.js');
 
 module.exports = function (app, express) {
   console.log('loading routes...');
-  app.post('/api/signin', handle.signin);
-  app.post('/api/signup', handle.signup);
-  // not yet implemented in handlers
-  // app.get('/api/signedin', handle.checkAuth);
-
+  app.post('/api/signin', userController.signin);
+  app.post('/api/signup', userController.signup);
 
 /*   these controllers have not been defined yet, so it is breaking the server. uncomment when/as they are defined
   app.post('/api/signin', userController.signin);
