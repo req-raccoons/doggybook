@@ -58,7 +58,9 @@ angular.module('doggyBook.services', [])
 
   return {
     newProf: newProf
-  }
+  };
+})
+
 
 .factory('Search', function ($http, $location, $window) {
 
