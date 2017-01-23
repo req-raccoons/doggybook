@@ -1,3 +1,4 @@
+
 var profController = require('./controller/profController.js');
 var searchController = require('./controller/searchController.js');
 // var userController = require('./controller/userController.js');
@@ -8,10 +9,15 @@ var handle = require('./handlers');
 
 
 module.exports = function (app, express) {
+  console.log('loading routes...');
+  app.post('/api/signin', handle.signin);
+  app.post('/api/signup', handle.signup);
+  // not yet implemented in handlers
+  // app.get('/api/signedin', handle.checkAuth);
 
-  app.post('/api/signin', handler.signin);
-  app.post('/api/signup', handler.signup);
-  app.get('/api/signedin', handler.checkAuth);
+
+/*   these controllers have not been defined yet, so it is breaking the server.
+ *   uncomment when/as they are defined
 
   // authentication middleware used to decode token and made available on the request
   // app.use('/api/links', helpers.decode);
@@ -23,9 +29,6 @@ module.exports = function (app, express) {
   //vvv might not be necessary? sends the results of the search request
   app.get('/api/search/', searchController.displaySearchQuery);
 
-  // below is reference from shortly angular --> consider whether or not we want helpers
-  // // If a request is sent somewhere other than the routes above,
-  // // send it through our custom error handler
-  // app.use(helpers.errorLogger);
-  // app.use(helpers.errorHandler);
+*/
+
 };
