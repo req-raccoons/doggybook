@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html ng-app='doggybook'>
+<html>
   <head>
     <meta charset="utf-8" />
-    <link>https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js</link>
-    <title>Doggybook</title>
+    <title>DoggyBook</title>
   </head>
-  <body>
+  <body ng-app='doggyBook'>
     <div ng-view></div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
     <script src="auth/auth.js"></script>
-    <script src="services.js"></script>
+    <script src="./services/services.js"></script>
     <script src="app.js"></script>
     <script src="dashboard/search.js"></script>
     <script src="profile/profile.js"></script>
     <script src="landing/landing.js"></script>
-    <script src="config.js"></script>
-
   </body>
 
 </html>

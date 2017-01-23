@@ -1,4 +1,4 @@
-angular.module('doggybook.auth', [])
+angular.module('doggyBook.auth', [])
 
 .controller('AuthController', function ($scope, $window, $location, Auth) {
   $scope.user = {};
@@ -18,7 +18,7 @@ angular.module('doggybook.auth', [])
     Auth.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.doggybook', token);
-        $location.path('/dashboard'); 
+        $location.path('/dashboard');
       })
       .catch(function (error) {
         console.error(error);

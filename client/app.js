@@ -1,4 +1,5 @@
 angular.module('doggyBook', [
+  'doggyBook.services',
   'doggyBook.auth',
   'doggyBook.profile',
   'doggyBook.search',
@@ -25,7 +26,7 @@ angular.module('doggyBook', [
       controller: 'ProfController',
       authenticate: true
     })
-    .when('/search'), {
+    .when('/search', {
       templateUrl: 'dashboard/search.html',
       controller: 'SearchController',
       authenticate: true
