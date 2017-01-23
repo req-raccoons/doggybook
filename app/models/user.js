@@ -18,10 +18,11 @@ var User = db.Model.extend({
     // bcrypt.compare(attemptedPassword, this.get('password'), function(err, isMatch) {
     // });
   },
-  hashPassword: () => {
+  hashPassword: function() {
+    console.log(`'this' is: `, this);
     var cipher = Promise.promisify(bcrypt.hash);
 
-    return cipher(this.get('password'), null, null)
+    return cipher(this.get('password'), null, null).bind(this)
       .then(function(hash) {
         this.set('password', hash);
       });

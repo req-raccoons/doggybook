@@ -14,9 +14,11 @@ var Walkers = require('../app/collections/walkers');
 
 
 exports.signin = function(req, res) {
-  console.log(req.body);
+  console.log('signing in!');
+  console.log('req.body: ', req.body);
 
   var username = req.body.username;
+  var email    = req.body.email;
   var password = req.body.password;
 
   // search the db for a particular username
@@ -26,7 +28,7 @@ exports.signin = function(req, res) {
     if (!user) {
       // if !found, redirect to sign in
       console.log('user not found, redirecting to landing page or sign in page');
-      res.redirect('/signin');
+      res.redirect('/api/signin');
     } else {
       // if found: hash the pw attempt against the stored pw
       user.comparePassword(password, function(match) {
@@ -47,9 +49,11 @@ exports.signin = function(req, res) {
 
 exports.signup = function(req, res) {
   // we'll be given some obj with data to be parsed and entered into the db.
-  console.log(req.body);
+  console.log('attempting a signup!');
+  console.log('req.body: ', req.body);
 
   var username = req.body.username;
+  var email    = req.body.email;
   var password = req.body.password;
 
   new User({username: username})
@@ -61,22 +65,29 @@ exports.signup = function(req, res) {
       console.log("username already exists");
       res.redirect('/signup');
     }
-    // otherwise create a new user
+    // if !found: register the user into TWO tables,
+    // the general user table and the dog/walker table
+    // dog/walker table must be created asynchronously!
+    // the user table will take a hashed version of the desired pw.
     else {
-      new User({
-        //create a new knex/backbone model and insert into the db
-
+      console.log('signing up the new user!');
+      var newUser = new User({
+        username: username,
+        password: this.hashPassword(password),
+        email: req.body.email,
+        isDog: req.body.isDog,
       });
-      new Dog({
 
+      console.log('made a new user!');
+      newUser.save()
+      .then(function(newUser) {
+        console.log(newUser);
+        if (newUser.get(isDog)) {
+          var newDog = new Dog();
+        } else {
+          var newWalker = new Walker();
+        }
       });
-
-      new Walker({
-
-      });
-      // if !found: register the user into TWO tables,
-      // the general user table and the dog/walker table
-      // the user table will take a hashed version of the desired pw.
     }
   });
 }
