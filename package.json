@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mcfungster/doggybook.git"
+    "url": "git+https://github.com/req-raccoons/doggybook.git"
   },
   "keywords": [
     "dogs",
@@ -19,15 +19,24 @@
   "author": "req.raccoons",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mcfungster/doggybook/issues"
+    "url": "https://github.com/req-raccoons/doggybook/issues"
   },
-  "homepage": "https://github.com/mcfungster/doggybook#readme",
+  "homepage": "https://github.com/req-raccoons/doggybook#readme",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.4.7",
     "body-parser": "^1.16.0",
     "bookshelf": "^0.10.2",
     "express": "^4.14.0",
+    "jwt-simple": "^0.5.1",
     "knex": "^0.12.6",
-    "path": "^0.12.7"
+    "mysql": "^2.12.0",
+    "path": "^0.12.7",
+    "q": "^1.4.1",
+    "request": "^2.79.0",
+    "sqlite3": "^3.1.8"
+  },
+  "devDependencies": {
+    "sqlite3": "^3.1.8"
   }
 }

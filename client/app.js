@@ -1,13 +1,16 @@
 angular.module('doggyBook', [
-  'doggyBook.auth', 'doggyBook.profile',
+  'doggyBook.services',
+  'doggyBook.auth',
+  'doggyBook.profile',
   'doggyBook.search',
+  'doggyBook.landing',
   'ngRoute'
 ])
 
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
     .when('/landing', {
-      templateUrl: 'index.html',
+      templateUrl: 'landing.html',
       controller: 'LandingController'
     })
     .when('/signin', {
@@ -23,13 +26,13 @@ angular.module('doggyBook', [
       controller: 'ProfController',
       authenticate: true
     })
-    .when('/search'), {
-      templateUrl: 'search/search.html',
+    .when('/search', {
+      templateUrl: 'dashboard/search.html',
       controller: 'SearchController',
       authenticate: true
     })
     .otherwise({
-      redirectTo: '/landing'
+      redirectTo: '/landings  '
     });
 
    $httpProvider.interceptors.push('AttachTokens');
@@ -56,4 +59,3 @@ angular.module('doggyBook', [
     }
   });
 });
-
