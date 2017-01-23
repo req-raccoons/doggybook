@@ -5,11 +5,28 @@ console.log('in server.js');
 var db = require('../app/config');
 
 var express = require('express');
+<<<<<<< HEAD
 var app = express();
 
 require('./routes.js')(app, express);
 require('./middleware.js')(app, express);
 
+=======
+<<<<<<< HEAD
+var bodyParser = require('body-parser');
+
+var app = express();
+
+=======
+// var bodyParser = require('body-parser');
+
+var app = express();
+
+require('./routes.js')(app, express);
+require('./middleware.js')(app, express);
+
+>>>>>>> working through auth functionality. Currently slight issue with bodyparser.
+>>>>>>> working through auth functionality. Currently slight issue with bodyparser.
 // middleware
 // app.use(express.static('client'));
 // app.use(bodyParser.json());
