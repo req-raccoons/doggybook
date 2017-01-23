@@ -1,4 +1,4 @@
-angular.module('doggybook.services', [])
+angular.module('doggyBook.services', [])
 
 .factory('Auth', function ($http, $location, $window) {
 
@@ -26,11 +26,11 @@ angular.module('doggybook.services', [])
   };
 
   var isAuth = function () {
-    return !!$window.localStorage.getItem('com.doggybook');
+    return !!$window.localStorage.getItem('com.doggyBook');
   };
 
   var signout = function () {
-    $window.localStorage.removeItem('com.doggybook');
+    $window.localStorage.removeItem('com.doggyBook');
     $location.path('/signin');
   };
 
@@ -40,7 +40,7 @@ angular.module('doggybook.services', [])
     isAuth: isAuth,
     signout: signout
   };
-});
+})
 
 .factory('Prof', function ($http, $location, $window) {
 //prof factory skeleton ->
@@ -58,7 +58,7 @@ angular.module('doggybook.services', [])
 
   return {
     newProf: newProf
-  };
+  }
 
 .factory('Search', function ($http, $location, $window) {
 
@@ -77,7 +77,7 @@ angular.module('doggybook.services', [])
   return {
     getAllUsers: getAllUsers
   };
-});
+})
 
 .factory('Landing', function ($http, $location, $window) {
 
