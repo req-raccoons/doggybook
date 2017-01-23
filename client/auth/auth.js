@@ -6,7 +6,7 @@ angular.module('doggyBook.auth', [])
   $scope.signin = function () {
     Auth.signin($scope.user)
       .then(function (token) {
-        $window.localStorage.setItem('com.doggybook', token);
+        $window.localStorage.setItem('com.doggyBook', token);
         $location.path('/dashboard');
       })
       .catch(function (error) {
@@ -17,7 +17,7 @@ angular.module('doggyBook.auth', [])
   $scope.signup = function () {
     Auth.signup($scope.user)
       .then(function (token) {
-        $window.localStorage.setItem('com.doggybook', token);
+        $window.localStorage.setItem('com.doggyBook', token);
         $location.path('/dashboard');
       })
       .catch(function (error) {
