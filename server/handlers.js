@@ -43,6 +43,7 @@ module.exports = {
       }
     });
   },
+
   signup: function(req, res, next) {
     // we'll be given some obj with data to be parsed and entered into the db.
     console.log('HEY handler.js signup is running');
