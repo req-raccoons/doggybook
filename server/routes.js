@@ -4,24 +4,26 @@ var searchController = require('./controller/searchController.js');
 
 // we can rename this later, but this is the 'controller' for users
 // userController has been commented out to accomodate this
-var handler = require('./handlers');
-
+var userController = require('./handlers.js');
 
 module.exports = function (app, express) {
 
-  app.post('/api/signin', handler.signin);
-  app.post('/api/signup', handler.signup);
-  app.get('/api/signedin', handler.checkAuth);
+  app.post('/api/signin', userController.signin);
+  app.post('/api/signup', userController.signup);
+  app.get('/api/signedin', userController.checkAuth);
 
   // authentication middleware used to decode token and made available on the request
   // app.use('/api/links', helpers.decode);
-  app.get('/api/prof/', profController.displayProf);
-  app.post('/api/prof/', profController.editProf);
+
+  /* IMPORTANT! The routes below will need to be built before being uncommented */
+
+  // app.get('/api/prof', profController.displayProf);
+  // app.post('/api/prof', profController.editProf);
 
   //vvv someone sends a search request
-  app.post('/api/search/', searchController.newSearchQuery);
+  // app.post('/api/search', searchController.newSearchQuery);
   //vvv might not be necessary? sends the results of the search request
-  app.get('/api/search/', searchController.displaySearchQuery);
+  // app.get('/api/search', searchController.displaySearchQuery);
 
   // below is reference from shortly angular --> consider whether or not we want helpers
   // // If a request is sent somewhere other than the routes above,
