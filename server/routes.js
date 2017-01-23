@@ -5,7 +5,7 @@ var searchController = require('./controller/searchController.js');
 
 // we can rename this later, but this is the 'controller' for users
 // userController has been commented out to accomodate this
-var handle = require('./handlers');
+var handler = require('./handlers');
 
 
 module.exports = function (app, express) {

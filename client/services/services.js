@@ -58,7 +58,8 @@ angular.module('doggyBook.services', [])
 
   return {
     newProf: newProf
-  }
+  };
+})
 
 .factory('Search', function ($http, $location, $window) {
 
@@ -80,7 +81,6 @@ angular.module('doggyBook.services', [])
 })
 
 .factory('Landing', function ($http, $location, $window) {
-
   var landingFunc = function () {
     //this function should just allow for rerouting between other
     return $http({
