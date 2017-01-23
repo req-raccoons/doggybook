@@ -3,6 +3,7 @@ var request = require('request');
 var db = require('../app/config');
 var jwt = require('jwt-simple');
 
+
 var User = require('../app/models/user');
 var Dog = require('../app/models/dog');
 var Walker = require('../app/models/walker');
@@ -11,19 +12,9 @@ var Users = require('../app/collections/users');
 var Dogs = require('../app/collections/dogs');
 var Walkers = require('../app/collections/walkers');
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 module.exports = {
   signin: function(req, res) {
-    console.log('hello, handlers.js sign in is running!', req);
->>>>>>> working through auth functionality. Currently slight issue with bodyparser.
-=======
-module.exports = {
-  signin: function(req, res) {
-    console.log('hello, handlers.js sign in is running!', req);
->>>>>>> fixed merge conflicts
+    console.log('hello handlers.js sign in is running!', req.body);
 
     var username = req.body.username;
     var password = req.body.password;
@@ -55,8 +46,8 @@ module.exports = {
   },
   signup: function(req, res, next) {
     // we'll be given some obj with data to be parsed and entered into the db.
-    console.log('HEY handler.js signup is running');
-    console.log(req);
+    console.log
+    console.log(req.body);
 
     var username = req.body.username;
     var password = req.body.password;
@@ -86,162 +77,36 @@ module.exports = {
     });
   },
 
-  //   findUser({username: username})
-  //     .then(function (user) {
-  //       if (user) {
-  //         next(new Error('User already exist!'));
-  //       } else {
-  //         // make a new user if not one
-  //         return createUser({
-  //           username: username,
-  //           password: password
-  //         });
-  //       }
-  //     })
-  //     .then(function (user) {
-  //       // create token to send back for auth
-  //       var token = jwt.encode(user, 'secret');
-  //       res.json({token: token});
-  //     })
-  //     .fail(function (error) {
-  //       next(error);
-  //     });
-  // },
+    var username = req.body.username;
+    var password = req.body.password;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fixed merge conflicts
-  new User({username: username})
-  .fetch()
-  .then(function(user) {
-    // check if the provided username exists in the db
-    // if found: send back an error
-    if (user) {
-      console.log("username already exists");
-      res.redirect('/');
-    }
-    // if !found: register the user into TWO tables,
-    // the general user table and the dog/walker table
-    // dog/walker table must be created asynchronously!
-    // the user table will take a hashed version of the desired pw.
-    else {
-      console.log('signing up the new user!');
-      var newUser = new User({
-        username: username,
-        password: this.hashPassword(password),
-        email: req.body.email,
-        isDog: req.body.isDog,
-      });
-
-      console.log('made a new user!');
-      newUser.save()
-      .then(function(newUser) {
-        console.log('new user added to db');
-        if (newUser.get('isDog')) {
-          console.log('new user is a dog');
-          var newDog = new Dog({
-            // create a new dog user following model/dog.js
-          });
-
+    // check to see if user already exists
+    findUser({username: username})
+      .then(function (user) {
+        if (user) {
+          next(new Error('User already exist!'));
         } else {
-          console.log('new user is a walker');
-          var newWalker = new Walker();
-          // create a new walker user following model/walker.js
+          // make a new user if not one
+          return createUser({
+            username: username,
+            password: password
+          });
         }
+      })
+      .then(function (user) {
+        // create token to send back for auth
+        var token = jwt.encode(user, 'secret');
+        res.json({token: token});
+      })
+      .fail(function (error) {
+        next(error);
       });
-module.exports = {
-  signin: function(req, res) {
-    console.log('hello, handlers.js sign in is running!', req);
-
-    var username = req.body.username;
-    var password = req.body.password;
-
-    // search the db for a particular username
-    new User({username: username})
-    .fetch()
-    .then(function(user) {
-      if (!user) {
-        // if !found, redirect to sign in
-        console.log('user not found, redirecting to landing page or sign in page');
-        res.redirect('/signin');
-      } else {
-        // if found: hash the pw attempt against the stored pw
-        user.comparePassword(password, function(match) {
-          if (match) {
-            // if matched, redirect to landing page/dashboard and authenticate
-            console.log('authenticate user + start a session');
-            res.redirect('/');
-
-          } else {
-            // if mismatched, send back to login page
-            console.log('wrong password, redirecting to landing page or sign in page');
-            res.redirect('/signin');
-          }
-        });
-      }
-    });
-  },
-  signup: function(req, res, next) {
-    // we'll be given some obj with data to be parsed and entered into the db.
-    console.log('HEY handler.js signup is running');
-    console.log(req);
-
-    var username = req.body.username;
-    var password = req.body.password;
-
-    new User({username: username})
-    .fetch()
-    .then(function(user) {
-      // check if the provided username exists in the db
-      // if found: send back an error
-      if (user) {
-        console.log("username already exists");
-        res.redirect('/signup');
-      }
-      // otherwise create a new user
-      else {
-        new User({
-          //create a new knex/backbone model and insert into the db
-        });
-        new Dog({
-        });
-        new Walker({
-        });
-        // if !found: register the user into TWO tables,
-        // the general user table and the dog/walker table
-        // the user table will take a hashed version of the desired pw.
-      }
-    });
   },
 
-  //   findUser({username: username})
-  //     .then(function (user) {
-  //       if (user) {
-  //         next(new Error('User already exist!'));
-  //       } else {
-  //         // make a new user if not one
-  //         return createUser({
-  //           username: username,
-  //           password: password
-  //         });
-  //       }
-  //     })
-  //     .then(function (user) {
-  //       // create token to send back for auth
-  //       var token = jwt.encode(user, 'secret');
-  //       res.json({token: token});
-  //     })
-  //     .fail(function (error) {
-  //       next(error);
-  //     });
-  // },
 
-<<<<<<< HEAD
-=======
->>>>>>> working through auth functionality. Currently slight issue with bodyparser.
-=======
->>>>>>> fixed merge conflicts
+
+
+
   checkAuth: function (req, res, next) {
     var token = req.headers['x-access-token'];
     if (!token) {
@@ -259,13 +124,6 @@ module.exports = {
         .fail(function (error) {
           next(error);
         });
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> working through auth functionality. Currently slight issue with bodyparser.
-=======
->>>>>>> working through auth functionality. Currently slight issue with bodyparser.
-=======
->>>>>>> fixed merge conflicts
     }
   }
 };
