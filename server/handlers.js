@@ -28,7 +28,7 @@ exports.signin = function(req, res) {
     if (!user) {
       // if !found, redirect to sign in
       console.log('user not found, redirecting to landing page or sign in page');
-      res.redirect('/api/signin');
+      res.redirect('/');
     } else {
       // if found: hash the pw attempt against the stored pw
       user.comparePassword(password, function(match) {
@@ -40,7 +40,7 @@ exports.signin = function(req, res) {
         } else {
           // if mismatched, send back to login page
           console.log('wrong password, redirecting to landing page or sign in page');
-          res.redirect('/signin');
+          res.redirect('/');
         }
       });
     }
@@ -63,7 +63,7 @@ exports.signup = function(req, res) {
     // if found: send back an error
     if (user) {
       console.log("username already exists");
-      res.redirect('/signup');
+      res.redirect('/');
     }
     // if !found: register the user into TWO tables,
     // the general user table and the dog/walker table
@@ -81,11 +81,17 @@ exports.signup = function(req, res) {
       console.log('made a new user!');
       newUser.save()
       .then(function(newUser) {
-        console.log(newUser);
-        if (newUser.get(isDog)) {
-          var newDog = new Dog();
+        console.log('new user added to db');
+        if (newUser.get('isDog')) {
+          console.log('new user is a dog');
+          var newDog = new Dog({
+            // create a new dog user following model/dog.js
+          });
+
         } else {
+          console.log('new user is a walker');
           var newWalker = new Walker();
+          // create a new walker user following model/walker.js
         }
       });
     }
