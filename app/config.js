@@ -4,7 +4,7 @@ var knex = require('knex')({
   // client: 'mysql',
   connection: {
     // may not be correct, check on this during deploy
-    filename: path.join(__dirname, '../db/doggysql.sqlite')
+    filename: path.join(__dirname, '../db/doggy5ql.sqlite')
   },
   useNullAsDefault: true
 });
