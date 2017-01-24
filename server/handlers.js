@@ -1,7 +1,7 @@
-var request = require('request');
+// var request = require('request');
 
 var db = require('../app/config');
-var jwt = require('jwt-simple');
+// var jwt = require('jwt-simple');
 
 var User = require('../app/models/user');
 var Dog = require('../app/models/dog');
@@ -45,10 +45,11 @@ module.exports = {
   },
   signup: function(req, res, next) {
     // we'll be given some obj with data to be parsed and entered into the db.
-    console.log('HEY handler.js signup is running');
-    console.log(req);
+    console.log('attempting a signup!');
+    console.log('req.body: ', req.body);
 
     var username = req.body.username;
+    var email    = req.body.email;
     var password = req.body.password;
 
     new User({username: username})
@@ -58,20 +59,38 @@ module.exports = {
       // if found: send back an error
       if (user) {
         console.log("username already exists");
-        res.redirect('/signup');
+        res.redirect('/');
       }
-      // otherwise create a new user
+      // if !found: register the user into TWO tables,
+      // the general user table and the dog/walker table
+      // dog/walker table must be created asynchronously!
+      // the user table will take a hashed version of the desired pw.
       else {
-        new User({
-          //create a new knex/backbone model and insert into the db
+        console.log('signing up the new user!');
+        var newUser = new User({
+          username: username,
+          password: this.hashPassword(password),
+          email: req.body.email,
+          isDog: req.body.isDog,
         });
-        new Dog({
+
+        console.log('made a new user!');
+        newUser.save()
+        .then(function(newUser) {
+          console.log('new user added to db');
+          if (newUser.get('isDog')) {
+            console.log('new user is a dog');
+            var newDog = new Dog({
+              // create a new dog user following model/dog.js
+            });
+            res.send(newDog);
+          } else {
+            console.log('new user is a walker');
+            var newWalker = new Walker();
+            // create a new walker user following model/walker.js
+            res.send(newWalker);
+          }
         });
-        new Walker({
-        });
-        // if !found: register the user into TWO tables,
-        // the general user table and the dog/walker table
-        // the user table will take a hashed version of the desired pw.
       }
     });
   },
@@ -93,6 +112,7 @@ module.exports = {
         .fail(function (error) {
           next(error);
         });
+
     }
   }
 };
