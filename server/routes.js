@@ -12,10 +12,10 @@ module.exports = function (app, express) {
   app.post('/api/signin', userController.signin);
   app.post('/api/signup', userController.signup);
 
+  app.get('/profiles/:username', profController.displayProf);
 /*   these controllers have not been defined yet, so it is breaking the server. uncomment when/as they are defined
   app.post('/api/signin', userController.signin);
   app.post('/api/signup', userController.signup);
-  app.get('/api/signedin', userController.checkAuth);
 
   // authentication middleware used to decode token and made available on the request
   // app.use('/api/links', helpers.decode);

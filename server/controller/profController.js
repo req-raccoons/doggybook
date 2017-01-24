@@ -1,9 +1,21 @@
+console.log('loading... profController.js');
+
+var db = require('../../app/config');
+
+var User = require('../../app/models/user');
+var Dog = require('../../app/models/dog');
+var Walker = require('../../app/models/walker');
+
+var Users = require('../../app/collections/users');
+var Dogs = require('../../app/collections/dogs');
+var Walkers = require('../../app/collections/walkers');
+
 exports.displayProf = function(req, res) {
   console.log('getting profile data!');
   console.log('req.body: ', req.body);
 
-  var username = req.body.username;
-
+  var username = req.params.username;
+  var profile = {}
   // search the db for a particular username
   new User({username: username})
   .fetch()
@@ -15,9 +27,23 @@ exports.displayProf = function(req, res) {
       // res.send();  // should probably send something else
     } else {
       // if found: grab the user profile data
-      var table = user.get('isDog')? 'dog' : 'walker';
-      // build a knex query and search the appropriate table
-      res.redirect('/'); // PLACEHOLDER
+      Object.assign(profile, user.toJSON());
+      var userId = user.get('userId');
+
+      if (user.get('isDog')) {
+        new Dog({userId: userId}).fetch()
+        .then(function(dog) {
+          Object.assign(profile, dog.toJSON());
+        });
+      } else {
+        new Walker({userId: userId}).fetch()
+        .then(function(walker) {
+          Object.assign(profile, walker.toJSON());
+        });
+      }
+      // build a bookshelf query and search the appropriate table
+      // res.redirect('/'); // PLACEHOLDER
+      res.send(profile);
     }
   });
 }
