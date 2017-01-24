@@ -4,6 +4,7 @@ angular.module('doggyBook.auth', [])
   $scope.user = {};
 
   $scope.signin = function () {
+    console.log('auth.js signin function has been invoked!')
     Auth.signin($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.doggyBook', token);
@@ -15,7 +16,6 @@ angular.module('doggyBook.auth', [])
   };
 
   $scope.signup = function () {
-    console.log('auth.js line 18 signup function has been invoked!')
     Auth.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.doggyBook', token);
