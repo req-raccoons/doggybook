@@ -3,12 +3,26 @@
   <form name='signupForm' ng-submit='signup()' id='signupForm'>
     <input type='text' ng-model='user.username' placeholder='Username...'>
     <input type="password" ng-model='user.password' placeholder='Password...'>
-    <!-- <select name='userType' form='newUserForm'>
+    <select name='userType' form='newUserForm'>
       <option value='Dog'>Dog</option>
       <option value='Dog Walker'>Dog Walker</option>
     </select>
-    <input type='text' ng-model='user.price' placeholder='Enter your desired price...'> -->
+    <input type='text' ng-model='user.price' placeholder='Enter your desired price...'>
     <button>signup</button>
   </form>
   <a href="#/signin">Already have an account? <strong>Signin</strong> ...</a>
 </div>
+
+
+
+<h2>{{profile.name}}</h2>
+<img src='profile.img' />
+<ul>
+  <!-- userType is either dog or walker -->
+  <li>{{profile.userType}}</li>
+  <li>{{profile.location}}</li>
+  <!-- walkType is one of walk, jog, or run -->
+  <li>{{profile.walkType}}</li>
+  <!-- walkTime is one of morning, afternoon, or night -->
+  <li>{{profile.walkTime}}</li>
+</ul>
