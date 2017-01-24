@@ -3,6 +3,7 @@ angular.module('doggyBook.services', [])
 .factory('Auth', function ($http, $location, $window) {
 
   var signin = function (user) {
+    console.log('in services.js auth factory: user: ', user);
     return $http({
       method: 'POST',
       url: '/api/signin',
@@ -15,7 +16,6 @@ angular.module('doggyBook.services', [])
 
   var signup = function (user) {
     //note that we might need to combine this with Prof.newProf below
-    console.log('in services.js auth factory: user: ', user);
     return $http({
       method: 'POST',
       url: '/api/signup',
@@ -65,7 +65,7 @@ angular.module('doggyBook.services', [])
 
 .factory('Search', function ($http, $location, $window) {
 
-  var getAllUsers = function () {
+  var getAllUsers = function (query) {
     //this function should query all profs from DB, send to search.html and
     return $http({
       method: 'GET',

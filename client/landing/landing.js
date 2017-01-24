@@ -4,7 +4,7 @@
 
 angular.module('doggyBook.landing', [])
 
-.controller('LandingController', function($scope, Players) {
+.controller('LandingController', function($scope) {
   //only starting the file -> should be able to route to other files; nothing else for now;
   $scope.data = {};
   $scope.landingFunction = function () {
