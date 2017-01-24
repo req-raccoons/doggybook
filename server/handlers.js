@@ -13,7 +13,7 @@ var Walkers = require('../app/collections/walkers');
 
 module.exports = {
   signin: function(req, res) {
-    console.log('hello, handlers.js sign in is running!', req);
+    console.log('hello, handlers.js signin is running!', req);
 
     var username = req.body.username;
     var password = req.body.password;
@@ -47,7 +47,7 @@ module.exports = {
   signup: function(req, res, next) {
     // we'll be given some obj with data to be parsed and entered into the db.
     console.log('HEY handler.js signup is running');
-    console.log(req);
+    console.log(req.body);
 
     var username = req.body.username;
     var password = req.body.password;
