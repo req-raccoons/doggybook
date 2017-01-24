@@ -5,12 +5,16 @@ console.log('in server.js');
 var db = require('../app/config');
 
 var express = require('express');
+// var bodyParser = require('body-parser');
+
 var app = express();
 
 require('./routes.js')(app, express);
 require('./middleware.js')(app, express);
 
-var routes = require('./routes')(app, express);
+// middleware
+// app.use(express.static('client'));
+// app.use(bodyParser.json());
 
 // app.post('/api/users/signup', handle.signup);
 // app.post('/api/users/signin', handle.signin);

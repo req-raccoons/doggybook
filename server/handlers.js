@@ -3,7 +3,6 @@ var request = require('request');
 var db = require('../app/config');
 var jwt = require('jwt-simple');
 
-
 var User = require('../app/models/user');
 var Dog = require('../app/models/dog');
 var Walker = require('../app/models/walker');
@@ -14,7 +13,7 @@ var Walkers = require('../app/collections/walkers');
 
 module.exports = {
   signin: function(req, res) {
-    console.log('hello handlers.js sign in is running!', req.body);
+    console.log('hello, handlers.js signin is running!', req);
 
     var username = req.body.username;
     var password = req.body.password;
@@ -46,7 +45,7 @@ module.exports = {
   },
   signup: function(req, res, next) {
     // we'll be given some obj with data to be parsed and entered into the db.
-    console.log
+    console.log('HEY handler.js signup is running');
     console.log(req.body);
 
     var username = req.body.username;
@@ -76,36 +75,6 @@ module.exports = {
       }
     });
   },
-
-    var username = req.body.username;
-    var password = req.body.password;
-
-    // check to see if user already exists
-    findUser({username: username})
-      .then(function (user) {
-        if (user) {
-          next(new Error('User already exist!'));
-        } else {
-          // make a new user if not one
-          return createUser({
-            username: username,
-            password: password
-          });
-        }
-      })
-      .then(function (user) {
-        // create token to send back for auth
-        var token = jwt.encode(user, 'secret');
-        res.json({token: token});
-      })
-      .fail(function (error) {
-        next(error);
-      });
-  },
-
-
-
-
 
   checkAuth: function (req, res, next) {
     var token = req.headers['x-access-token'];

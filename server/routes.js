@@ -20,14 +20,6 @@ module.exports = function (app, express) {
   // authentication middleware used to decode token and made available on the request
   // app.use('/api/links', helpers.decode);
 
-  // app.get('/api/prof', profController.displayProf);
-  // app.post('/api/prof', profController.editProf);
-
-  //vvv someone sends a search request
-  // app.post('/api/search', searchController.newSearchQuery);
-  //vvv might not be necessary? sends the results of the search request
-  // app.get('/api/search', searchController.displaySearchQuery);
-
-*/
+  /* IMPORTANT! The routes below will need to be built before being uncommented */
 
 };
