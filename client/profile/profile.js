@@ -5,6 +5,7 @@ angular.module('doggyBook.profile', [])
   $scope.userID = {};
   // profile object stores all of the info for the user from the db
   $scope.profile = {};
+  // data object stores all of the info for the user from the db
 
   var profileRender = function () {
     Prof.showProf($scope.userID)
