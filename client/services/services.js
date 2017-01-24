@@ -44,13 +44,13 @@ angular.module('doggyBook.services', [])
 })
 
 .factory('Prof', function ($http, $location, $window) {
-//prof factory skeleton ->
-  var newProf = function (prof) {
-    //this function should run with signup if we are inputting prof data there
+
+  var showProf = function (userID) {
+    //this function should show the profile for a given user
     return $http({
       method: 'POST',
       url: '/api/prof',
-      data: prof
+      data: userID
     })
     .then(function (resp) {
       return resp;
@@ -58,7 +58,7 @@ angular.module('doggyBook.services', [])
   };
 
   return {
-    newProf: newProf
+    showProf: showProf
   };
 })
 
