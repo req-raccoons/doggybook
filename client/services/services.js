@@ -62,6 +62,7 @@ angular.module('doggyBook.services', [])
   };
 })
 
+
 .factory('Search', function ($http, $location, $window) {
 
   var getAllUsers = function () {
