@@ -1,5 +1,5 @@
 console.log('loading db...');
-var dbconfig = require('../env/db.js');
+var dbconfig = require('../db/db.js');
 // console.log(dbconfig);
 
 var path = require('path');

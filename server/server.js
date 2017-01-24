@@ -9,8 +9,8 @@ var express = require('express');
 
 var app = express();
 
-require('./routes.js')(app, express);
 require('./middleware.js')(app, express);
+require('./routes.js')(app, express);
 
 // middleware
 // app.use(express.static('client'));

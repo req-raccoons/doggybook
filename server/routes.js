@@ -19,7 +19,5 @@ module.exports = function (app, express) {
 
   // authentication middleware used to decode token and made available on the request
   // app.use('/api/links', helpers.decode);
-
-  /* IMPORTANT! The routes below will need to be built before being uncommented */
-
+  */
 };
