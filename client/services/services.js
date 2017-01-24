@@ -15,6 +15,7 @@ angular.module('doggyBook.services', [])
 
   var signup = function (user) {
     //note that we might need to combine this with Prof.newProf below
+    console.log('in services.js auth factory: user: ', user);
     return $http({
       method: 'POST',
       url: '/api/signup',
@@ -82,7 +83,6 @@ angular.module('doggyBook.services', [])
 })
 
 .factory('Landing', function ($http, $location, $window) {
-
   var landingFunc = function () {
     //this function should just allow for rerouting between other
     return $http({
