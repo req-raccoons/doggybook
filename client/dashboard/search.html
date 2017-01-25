@@ -1,8 +1,10 @@
 <div>
-  <p> Enter price here!</p>
-  <form  ng-submit='getPlayers()'>
-    <input type='text' ng-model='search.price'
-    placeholder="Enter a desired price here..." />
+
+  <p> Enter your search criteria below!</p>
+  <form  ng-submit='getAllUsers()'>
+    <input type='text' ng-model='search.price' placeholder="Desired Price " />
+    <input type='text' ng-model='search.zip' placeholder="Zip " />
+
     <button type='submit'> Submit</button>
   </form> <br />
 
