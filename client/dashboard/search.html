@@ -1,13 +1,11 @@
 <div>
-
   <p> Enter your search criteria below!</p>
   <form  ng-submit='getAllUsers()'>
     <input type='text' ng-model='search.price' placeholder="Desired Price " />
     <input type='text' ng-model='search.zip' placeholder="Zip " />
-
     <button type='submit'> Submit</button>
-  </form> <br />
-
+  </form>
+  <br />
   <div>
     <ul>
       <li ng-repeat="users in usersAry|filter:search">

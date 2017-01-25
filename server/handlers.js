@@ -13,7 +13,6 @@ var Walkers = require('../app/collections/walkers');
 
 module.exports = {
   signin: function(req, res) {
-    console.log('hello, handlers.js signin is running!', req);
 
     var username = req.body.username;
     var password = req.body.password;
@@ -37,7 +36,7 @@ module.exports = {
           } else {
             // if mismatched, send back to login page
             console.log('wrong password, redirecting to landing page or sign in page');
-            res.redirect('/signin');
+            res.redirect('/');
           }
         });
       }
@@ -69,7 +68,7 @@ module.exports = {
         console.log('signing up the new user!');
         var newUser = new User({
           username: username,
-          password: this.hashPassword(password),
+          password: password,
           email: req.body.email,
           isDog: req.body.isDog,
         });
