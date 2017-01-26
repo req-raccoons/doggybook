@@ -31,7 +31,7 @@ exports.displayProf = function(req, res) {
       Object.assign(profile, user.toJSON());
       var userId = user.get('id');
 
-      if (user.get('isDog') === 'Dog') {
+      if (user.get('type') === 'Dog') {
         console.log('grabbing dog profile: ', userId);
         // console.log('from user model: ', user);
         new Dog({userId: userId}).fetch()

@@ -14,7 +14,7 @@ db.knex.schema.hasTable('users')
       user.string('username', 100).unique();
       user.string('email', 100).unique();
       user.string('password', 100);
-      user.boolean('isDog');
+      user.string('type', 10);
       user.timestamps();
     }).then(function(table) {
       console.log(`Created 'users' Table`);
