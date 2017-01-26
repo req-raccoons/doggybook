@@ -67,17 +67,24 @@ module.exports = {
       else {
         console.log('signing up the new user!');
         var newUser = new User({
-          username: username,
-          password: password,
-          email: req.body.email,
-          isDog: req.body.isDog,
+          username: req.body.username,
+          email:    req.body.email,
+          password: req.body.password,
+          type:    req.body.type
         });
 
         console.log('made a new user!');
         newUser.save()
         .then(function(newUser) {
           console.log('new user added to db');
-          if (newUser.get('isDog')) {
+          var newDogOrWalker = {
+            name:     req.body.name,
+            address:  req.body.address,
+            zip:      req.body.zip,
+            userId:   newUser.get('id')
+          };
+
+          if (newUser.get('type') === 'Dog') {
             console.log('new user is a dog');
             var newDog = new Dog({
               // create a new dog user following model/dog.js
