@@ -21,15 +21,7 @@ angular.module('doggyBook', [
       templateUrl: 'auth/signup.html',
       controller: 'AuthController'
     })
-<<<<<<< HEAD
     .when('/profiles', {
-=======
-<<<<<<< HEAD
-    .when('/profiles', {
-=======
-    .when('/profiles/', {
->>>>>>> commiting unstaged changes before rebasing.
->>>>>>> mergeBranch
       templateUrl: 'profile/profile.html',
       controller: 'ProfController',
       authenticate: true
