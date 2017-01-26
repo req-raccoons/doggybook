@@ -64,25 +64,34 @@ module.exports = {
       // the user table will take a hashed version of the desired pw.
       else {
         console.log('signing up the new user!');
-        var newUser = new User(req.body);
-        // var newUser = new User({
-        //   username: username,
-        //   email:    email,
-        //   password: password,
-        //   isDog:    req.body.isDog
-        // });
+        // var newUser = new User(req.body);
+        // console.log('req.body: ', req.body);
+        var newUser = new User({
+          username: req.body.username,
+          email:    req.body.email,
+          password: req.body.password,
+          isDog:    req.body.isDog
+        });
 
-        console.log('made a new user!');
+
+        // console.log('made a new user!', newUser.toJSON());
         newUser.save()
         .then(function(newUser) {
           console.log('new user added to db');
-          if (newUser.get('isDog')) {
+          var newDogOrWalker = {
+            name:     req.body.name,
+            address:  req.body.address,
+            zip:      req.body.zip,
+            userId:   newUser.get('id')
+          };
+
+          if (newUser.get('isDog') === 'true') {
             console.log('new user is a dog');
             // var newDog = new Dog({
             //   // create a new dog user following model/dog.js
             //
             // });
-            var newDog = new Dog(req.body);
+            var newDog = new Dog(newDogOrWalker);
             newDog.save();
           } else {
             console.log('new user is a walker');
@@ -90,7 +99,7 @@ module.exports = {
             //   // create a new walker user following model/walker.js
             //
             // });
-            var newWalker = new Walker(req.body);
+            var newWalker = new Walker(newDogOrWalker);
             newWalker.save();
           }
           res.send(newUser);

@@ -14,9 +14,9 @@
       <label> Zip Code: </label>
       <input type="text" ng-model='user.zip' /> <br />
       <label>User Type:</label>
-      <select name='userType' form='signupForm' ng-model='user.type'>
-        <option value='Dog'>Dog</option>
-        <option value='Dog Walker'>Dog Walker</option>
+      <select name='userType' form='signupForm' ng-model='user.isDog'>
+        <option value='true'>Dog</option>
+        <option value='false'>Dog Walker</option>
       </select> <br/>
       <label>Desired Price:</label>
       <input type='text' ng-model='user.price'> <br />
