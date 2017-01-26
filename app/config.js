@@ -29,6 +29,8 @@ db.knex.schema.hasTable('dogs')
       // structure of dog db object to be fleshed out further
       dog.increments('id').primary();
       dog.string('name');
+      dog.string('address');
+      dog.string('zip');
       dog.integer('userId').unsigned();
       dog.foreign('userId').references('users.id');
       dog.timestamps();
@@ -45,6 +47,8 @@ db.knex.schema.hasTable('walkers')
       // structure of walker db object to be fleshed out further
       walker.increments('id').primary();
       walker.string('name');
+      walker.string('address');
+      walker.string('zip');
       walker.integer('userId').unsigned();
       walker.foreign('userId').references('users.id');
       walker.timestamps();

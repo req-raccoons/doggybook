@@ -48,8 +48,6 @@ module.exports = {
     console.log('req.body: ', req.body);
 
     var username = req.body.username;
-    var email    = req.body.email;
-    var password = req.body.password;
 
     new User({username: username})
     .fetch()
@@ -66,29 +64,45 @@ module.exports = {
       // the user table will take a hashed version of the desired pw.
       else {
         console.log('signing up the new user!');
+        // var newUser = new User(req.body);
+        // console.log('req.body: ', req.body);
         var newUser = new User({
-          username: username,
-          password: password,
-          email: req.body.email,
-          isDog: req.body.isDog,
+          username: req.body.username,
+          email:    req.body.email,
+          password: req.body.password,
+          isDog:    req.body.isDog
         });
 
-        console.log('made a new user!');
+
+        // console.log('made a new user!', newUser.toJSON());
         newUser.save()
         .then(function(newUser) {
           console.log('new user added to db');
-          if (newUser.get('isDog')) {
+          var newDogOrWalker = {
+            name:     req.body.name,
+            address:  req.body.address,
+            zip:      req.body.zip,
+            userId:   newUser.get('id')
+          };
+
+          if (newUser.get('isDog') === 'true') {
             console.log('new user is a dog');
-            var newDog = new Dog({
-              // create a new dog user following model/dog.js
-            });
-            res.send(newDog);
+            // var newDog = new Dog({
+            //   // create a new dog user following model/dog.js
+            //
+            // });
+            var newDog = new Dog(newDogOrWalker);
+            newDog.save();
           } else {
             console.log('new user is a walker');
-            var newWalker = new Walker();
-            // create a new walker user following model/walker.js
-            res.send(newWalker);
+            // var newWalker = new Walker({
+            //   // create a new walker user following model/walker.js
+            //
+            // });
+            var newWalker = new Walker(newDogOrWalker);
+            newWalker.save();
           }
+          res.send(newUser);
         });
       }
     });
