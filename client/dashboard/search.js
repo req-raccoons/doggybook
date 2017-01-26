@@ -8,7 +8,7 @@ angular.module('doggyBook.search', [])
   $scope.getUsers = function () {
     Search.getAllUsers(query)
       .then(function(response) {
-        $scope.results = response;
+        $scope.results = response.data;
       })
       .catch(function(error) {
         console.error(error);
