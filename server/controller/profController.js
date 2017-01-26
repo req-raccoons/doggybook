@@ -13,7 +13,7 @@ var Walkers = require('../../app/collections/walkers');
 module.exports = {
   displayProf: function(req, res) {
     console.log('getting profile data!');
-    console.log('req.body: ', req.body);
+    console.log('req.params: ', req.params);
 
     var username = req.params.username;
     var profile = {}
