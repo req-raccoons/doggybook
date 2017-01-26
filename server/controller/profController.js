@@ -50,3 +50,24 @@ module.exports = {
   }
 >>>>>>> commiting unstaged changes before rebasing.
 }
+
+// checkAuth: function (req, res, next) {
+//   var token = req.headers['x-access-token'];
+//   if (!token) {
+//     next(new Error('No token'));
+//   } else {
+//     var user = jwt.decode(token, 'secret');
+//     findUser({username: user.username})
+//       .then(function (foundUser) {
+//         if (foundUser) {
+//           res.send(200);
+//         } else {
+//           res.send(401);
+//         }
+//       })
+//       .fail(function (error) {
+//         next(error);
+//       });
+//
+//   }
+// }
