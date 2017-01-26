@@ -48,7 +48,6 @@ module.exports = {
       }
     });
   }
->>>>>>> commiting unstaged changes before rebasing.
 }
 
 // checkAuth: function (req, res, next) {
