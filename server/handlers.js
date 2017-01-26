@@ -70,7 +70,7 @@ module.exports = {
           username: req.body.username,
           email:    req.body.email,
           password: req.body.password,
-          isDog:    req.body.isDog
+          type:    req.body.type
         });
 
 
@@ -85,7 +85,7 @@ module.exports = {
             userId:   newUser.get('id')
           };
 
-          if (newUser.get('isDog') === 'Dog') {
+          if (newUser.get('type') === 'Dog') {
             console.log('new user is a dog');
             // var newDog = new Dog({
             //   // create a new dog user following model/dog.js
