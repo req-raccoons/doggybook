@@ -85,7 +85,7 @@ module.exports = {
             userId:   newUser.get('id')
           };
 
-          if (newUser.get('isDog') === 'true') {
+          if (newUser.get('isDog') === 'Dog') {
             console.log('new user is a dog');
             // var newDog = new Dog({
             //   // create a new dog user following model/dog.js
