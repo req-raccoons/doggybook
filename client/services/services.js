@@ -46,6 +46,7 @@ angular.module('doggyBook.services', [])
 .factory('Prof', function ($http, $location, $window) {
 
   var showProf = function (userName) {
+    userName = 'thebunny'
     //this function should show the profile for a given user
     console.log('services.js line 50 showProf is running', userName)
     return $http({
