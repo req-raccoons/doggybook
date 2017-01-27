@@ -11,23 +11,24 @@ var Dogs = require('../../app/collections/dogs');
 var Walkers = require('../../app/collections/walkers');
 
 module.exports = {
-  getAllUsers: function(query) {
-    console.log('getAllUsers!', query);
-    if (query === 'Dogs') {
-      console.log('specifically dogs!');
-      Dogs.fetchAll()
-      .then(function(allDogs) {
-        return allDogs;
-      });
-    } else if (query === 'Dog Walkers') {
-      console.log('specifically walkers!');
-      Walkers.fetchAll()
-      .then(function(allWalkers) {
-        return allWalkers;
-      });
-    } else {
-      console.log('searching for: ' + query + ' not yet implemented');
-    }
+  getAllUsers: function(req, res, next) {
+    console.log('getAllUsers! req.body: ', req.body);
+    // if (req.body === 'Dogs') {
+    //   console.log('specifically dogs!');
+    //   Dogs.fetchAll()
+    //   .then(function(allDogs) {
+    //     return allDogs;
+    //   });
+    // } else if (req.body === 'Dog Walkers') {
+    //   console.log('specifically walkers!');
+    //   Walkers.fetchAll()
+    //   .then(function(allWalkers) {
+    //     return allWalkers;
+    //   });
+    // } else {
+    //   console.log('searching for: ' + req.body + ' not yet implemented');
+    // }
+    console.log('searching for: ' + req.body + ' not yet implemented');
   }
 
 }
