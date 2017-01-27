@@ -74,7 +74,7 @@ module.exports = {
         });
 
 
-        // console.log('made a new user!', newUser.toJSON());
+        console.log('made a new user!', newUser.toJSON());
         newUser.save()
         .then(function(newUser) {
           console.log('new user added to db');
