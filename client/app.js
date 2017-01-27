@@ -10,7 +10,7 @@ angular.module('doggyBook', [
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
     .when('/landing', {
-      templateUrl: 'landing.html',
+      templateUrl: '/landing/landing.html',
       controller: 'LandingController'
     })
     .when('/signin', {
@@ -18,10 +18,10 @@ angular.module('doggyBook', [
       controller: 'AuthController'
     })
     .when('/signup', {
-      templateUrl: 'auth/signin.html',
+      templateUrl: 'auth/signup.html',
       controller: 'AuthController'
     })
-    .when('/profile', {
+    .when('/profiles', {
       templateUrl: 'profile/profile.html',
       controller: 'ProfController',
       authenticate: true
@@ -32,7 +32,7 @@ angular.module('doggyBook', [
       authenticate: true
     })
     .otherwise({
-      redirectTo: '/landings  '
+      redirectTo: '/landing'
     });
 
    $httpProvider.interceptors.push('AttachTokens');
@@ -41,7 +41,7 @@ angular.module('doggyBook', [
 
   var attach = {
     request: function (object) {
-      var jwt = $window.localStorage.getItem('com.doggybook');
+      var jwt = $window.localStorage.getItem('com.doggyBook');
       if (jwt) {
         object.headers['x-access-token'] = jwt;
       }

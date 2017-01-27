@@ -14,10 +14,10 @@ db.knex.schema.hasTable('users')
       user.string('username', 100).unique();
       user.string('email', 100).unique();
       user.string('password', 100);
-      user.boolean('isDog');
+      user.string('type', 10);
       user.timestamps();
     }).then(function(table) {
-      console.log('Created Table: ', table);
+      console.log(`Created 'users' Table`);
     });
   }
 });
@@ -29,10 +29,15 @@ db.knex.schema.hasTable('dogs')
       // structure of dog db object to be fleshed out further
       dog.increments('id').primary();
       dog.string('name');
+      dog.string('address');
+      dog.string('zip');
+      dog.string('imgurl');
+      dog.string('price');
+      dog.integer('userId').unsigned();
       dog.foreign('userId').references('users.id');
       dog.timestamps();
     }).then(function(table) {
-      console.log('Created Table: ', table);
+      console.log(`Created 'dogs' Table`);
     });
   }
 });
@@ -44,10 +49,15 @@ db.knex.schema.hasTable('walkers')
       // structure of walker db object to be fleshed out further
       walker.increments('id').primary();
       walker.string('name');
+      walker.string('address');
+      walker.string('zip');
+      walker.string('imgurl');
+      walker.string('price');
+      walker.integer('userId').unsigned();
       walker.foreign('userId').references('users.id');
       walker.timestamps();
     }).then(function(table) {
-      console.log('Created Table: ', table);
+      console.log(`Created 'walkers' Table`);
     });
   }
 });

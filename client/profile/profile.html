@@ -4,22 +4,23 @@
   <nav class="navigation">
     <ul>
       <li>
-        <a href="#/landing">Links</a>
+        <a href="#/landing">Head back to the main page!</a>
       </li>
       <li>
-        <a href="#/search">Shorten</a>
+        <a href="#/search">Make a search!</a>
       </li>
     </ul>
   </nav>
 </div>
 
 <!-- the div below will contain all of the info for an individual's profile -->
-<div class='profile'>
+<div class='profile' >
   <!-- syntax and object info needs to be modelled out -->
-  <h2>{{profile.name}}</h2>
-  <img src='profile.img' />
+  <h2>{{profile.username}}</h2>
+  <img src= '{{profile.img}}' />
   <ul>
     <!-- userType is either dog or walker -->
+    <li>{{profile.email}}</li>
     <li>{{profile.userType}}</li>
     <li>{{profile.location}}</li>
     <!-- walkType is one of walk, jog, or run -->

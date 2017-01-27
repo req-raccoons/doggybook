@@ -4,10 +4,11 @@ angular.module('doggyBook.auth', [])
   $scope.user = {};
 
   $scope.signin = function () {
+    console.log('auth.js signin function has been invoked!')
     Auth.signin($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.doggyBook', token);
-        $location.path('/dashboard');
+        $location.path('/landing');
       })
       .catch(function (error) {
         console.error(error);
@@ -18,9 +19,10 @@ angular.module('doggyBook.auth', [])
     Auth.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.doggyBook', token);
-        $location.path('/dashboard');
+        $location.path('/landing');
       })
       .catch(function (error) {
+        console.log('danger danger!!! auth.js signup function has an error!')
         console.error(error);
       });
   };
