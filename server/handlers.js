@@ -68,9 +68,9 @@ module.exports = {
         // console.log('req.body: ', req.body);
         var newUser = new User({
           username: req.body.username,
-          email:    req.body.email,
           password: req.body.password,
-          type:    req.body.type
+          email:    req.body.email,
+          type:     req.body.type
         });
 
 
@@ -80,8 +80,11 @@ module.exports = {
           console.log('new user added to db');
           var newDogOrWalker = {
             name:     req.body.name,
+            imgurl:   req.body.imgurl,
             address:  req.body.address,
             zip:      req.body.zip,
+            type:     req.body.type,
+            price:    req.body.price,
             userId:   newUser.get('id')
           };
 

@@ -45,12 +45,11 @@ angular.module('doggyBook.services', [])
 
 .factory('Prof', function ($http, $location, $window) {
 
-  var showProf = function (userID) {
-    //this function should show the profile for a given user
+  var showProf = function (userName='rj3') {
+    console.log('showProf services userName: ', userName)
     return $http({
-      method: 'POST',
-      url: '/api/prof',
-      data: userID
+      method: 'GET',
+      url: '/profiles/'+userName
     })
     .then(function (resp) {
       return resp;
