@@ -67,7 +67,7 @@ angular.module('doggyBook.services', [])
   var getAllUsers = function (query) {
     //this function should query all profs from DB, send to search.html and
     return $http({
-      method: 'GET',
+      method: 'POST',
       url: '/api/search',
       data: query
     })

@@ -4,9 +4,9 @@ angular.module('doggyBook.search', [])
   // the results object should store all of the results of the query; ie all users matching a given query
   $scope.results = {};
   // the query object will include the search parameters
-  $scope.query = {};
+  // $scope.query = {};
   $scope.getUsers = function (query) {
-    console.log('search.js getUsers');
+    console.log('search.js getUsers query: ', query);
     Search.getAllUsers(query)
       .then(function(response) {
         $scope.results = response.data;
