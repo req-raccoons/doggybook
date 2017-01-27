@@ -52,6 +52,7 @@ angular.module('doggyBook.services', [])
       url: '/profiles/'+userName
     })
     .then(function (resp) {
+      console.log('response data in Prof factory: ', resp);
       return resp;
     });
   };
@@ -72,6 +73,7 @@ angular.module('doggyBook.services', [])
       data: query
     })
     .then(function (resp) {
+      console.log('in Search factory, http request resolved');
       return resp;
     });
   };

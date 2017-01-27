@@ -11,7 +11,7 @@ var Dogs = require('../../app/collections/dogs');
 var Walkers = require('../../app/collections/walkers');
 
 module.exports = {
-  displayProf: function(req, res) {
+  displayProf: function(req, res, next) {
     var username = req.params.username;
       var profile = {}
       // search the db for a particular username
@@ -39,6 +39,7 @@ module.exports = {
             })
             .then(function() {
               console.log('\nreturning: ', profile);
+              delete profile.password;
               res.send(profile);
             });
           } else {
@@ -48,6 +49,7 @@ module.exports = {
             })
             .then(function() {
               console.log('\nreturning: ', profile);
+              delete profile.password;
               res.send(profile);
             });
           }
