@@ -68,24 +68,27 @@ module.exports = {
         // console.log('req.body: ', req.body);
         var newUser = new User({
           username: req.body.username,
-          email:    req.body.email,
           password: req.body.password,
-          isDog:    req.body.isDog
+          email:    req.body.email,
+          type:     req.body.type
         });
 
 
-        // console.log('made a new user!', newUser.toJSON());
+        console.log('made a new user!', newUser.toJSON());
         newUser.save()
         .then(function(newUser) {
           console.log('new user added to db');
           var newDogOrWalker = {
             name:     req.body.name,
+            imgurl:   req.body.imgurl,
             address:  req.body.address,
             zip:      req.body.zip,
+            type:     req.body.type,
+            price:    req.body.price,
             userId:   newUser.get('id')
           };
 
-          if (newUser.get('isDog') === 'true') {
+          if (newUser.get('type') === 'Dog') {
             console.log('new user is a dog');
             // var newDog = new Dog({
             //   // create a new dog user following model/dog.js

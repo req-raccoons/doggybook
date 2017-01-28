@@ -45,14 +45,14 @@ angular.module('doggyBook.services', [])
 
 .factory('Prof', function ($http, $location, $window) {
 
-  var showProf = function (userID) {
-    //this function should show the profile for a given user
+  var showProf = function (userName='rj3') {
+    console.log('showProf services userName: ', userName)
     return $http({
-      method: 'POST',
-      url: '/api/prof',
-      data: userID
+      method: 'GET',
+      url: '/profiles/'+userName
     })
     .then(function (resp) {
+      console.log('response data in Prof factory: ', resp);
       return resp;
     });
   };
@@ -68,11 +68,12 @@ angular.module('doggyBook.services', [])
   var getAllUsers = function (query) {
     //this function should query all profs from DB, send to search.html and
     return $http({
-      method: 'GET',
+      method: 'POST',
       url: '/api/search',
       data: query
     })
     .then(function (resp) {
+      console.log('in Search factory, http request resolved');
       return resp;
     });
   };

@@ -39,7 +39,21 @@
         </div>
       </div>
 
-    </div>
-  </div>
+
+<!-- the div below will contain all of the info for an individual's profile -->
+<div class='profile' >
+  <!-- syntax and object info needs to be modelled out -->
+  <h2>{{profile.username}}</h2>
+  <img src= '{{profile.img}}' />
+  <ul>
+    <!-- userType is either dog or walker -->
+    <li>{{profile.email}}</li>
+    <li>{{profile.userType}}</li>
+    <li>{{profile.location}}</li>
+    <!-- walkType is one of walk, jog, or run -->
+    <li>{{profile.walkType}}</li>
+    <!-- walkTime is one of morning, afternoon, or night -->
+    <li>{{profile.walkTime}}</li>
+  </ul>
 
 </div>

@@ -14,7 +14,7 @@ db.knex.schema.hasTable('users')
       user.string('username', 100).unique();
       user.string('email', 100).unique();
       user.string('password', 100);
-      user.boolean('isDog');
+      user.string('type', 10);
       user.timestamps();
     }).then(function(table) {
       console.log(`Created 'users' Table`);
@@ -31,6 +31,8 @@ db.knex.schema.hasTable('dogs')
       dog.string('name');
       dog.string('address');
       dog.string('zip');
+      dog.string('imgurl');
+      dog.string('price');
       dog.integer('userId').unsigned();
       dog.foreign('userId').references('users.id');
       dog.timestamps();
@@ -49,6 +51,8 @@ db.knex.schema.hasTable('walkers')
       walker.string('name');
       walker.string('address');
       walker.string('zip');
+      walker.string('imgurl');
+      walker.string('price');
       walker.integer('userId').unsigned();
       walker.foreign('userId').references('users.id');
       walker.timestamps();
