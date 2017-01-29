@@ -80,10 +80,9 @@ module.exports = {
           console.log('new user added to db');
           var newDogOrWalker = {
             name:     req.body.name,
-            imgurl:   req.body.imgurl,
             address:  req.body.address,
             zip:      req.body.zip,
-            type:     req.body.type,
+            imgurl:   req.body.imgurl,
             price:    req.body.price,
             userId:   newUser.get('id')
           };
