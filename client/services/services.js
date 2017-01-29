@@ -49,7 +49,7 @@ angular.module('doggyBook.services', [])
     console.log('showProf services userName: ', userName)
     return $http({
       method: 'GET',
-      url: '/profiles/'+userName
+      url: '/profiles/' + userName
     })
     .then(function (resp) {
       console.log('response data in Prof factory: ', resp);
