@@ -12,7 +12,7 @@ module.exports = function (app, express) {
   app.post('/api/signin', userController.signin);
   app.post('/api/signup', userController.signup);
 
-  app.get('/profiles/:username', profController.displayProf);
+  app.get('/api/profiles/:username', profController.displayProf);
 
   app.post('/api/search', searchController.getAllUsers);
 /*   these controllers have not been defined yet, so it is breaking the server. uncomment when/as they are defined
