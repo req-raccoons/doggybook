@@ -1,6 +1,6 @@
 angular.module('doggyBook.auth', [])
 
-.controller('AuthController', function ($scope, $window, $location, Auth) {
+.controller('AuthController', function ($scope, $window, $location, $rootScope, Auth) {
   $scope.user = {};
 
   $scope.signin = function () {
@@ -8,6 +8,7 @@ angular.module('doggyBook.auth', [])
     Auth.signin($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.doggyBook', token);
+        $rootScope.isSignedIn = true;
         $location.path('/landing');
       })
       .catch(function (error) {
@@ -19,11 +20,18 @@ angular.module('doggyBook.auth', [])
     Auth.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.doggyBook', token);
+        $rootScope.isSignedIn = true;
         $location.path('/landing');
       })
       .catch(function (error) {
         console.log('danger danger!!! auth.js signup function has an error!')
         console.error(error);
       });
+  };
+
+  $scope.signout = function () {
+    console.log('auth.js signing out!');
+    $rootScope.isSignedIn = false;
+    Auth.signout();
   };
 });
