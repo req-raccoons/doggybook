@@ -77,7 +77,8 @@ module.exports = {
         newUser.save()
         .then(function(newUser) {
           console.log('new user added to db');
-          if(req.body.type === 'Dog') {
+          console.log(req.body.type);
+          if (req.body.type === 'Dog') {
             var newDog = new Dog({
               name:     req.body.name,
               address:  req.body.address,
