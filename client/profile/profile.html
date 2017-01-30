@@ -1,5 +1,4 @@
 <div id='profile'>
-
   <!-- nav below only includes landing & search; consider adding signout & nav to your profile -->
   <div class="container">
     <div class="row">
@@ -23,13 +22,14 @@
 
       <div class="col-md-9">
         <div class="panel panel-default">
-          <div class="panel-heading"><h4>User Information</h4></div>
+          <div class="panel-heading"><h4>{{profile.name}}</h4></div>
           <div class="panel-body">
             <ul id="user-info">
               <li>User Type: {{profile.type}}</li>
               <li>Name: {{profile.name}}</li>
               <li>Address: {{profile.address}}</li>
               <li>Email: {{profile.email}}</li>
+
             </ul>
           </div>
         </div>
