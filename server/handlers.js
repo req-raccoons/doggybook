@@ -73,36 +73,41 @@ module.exports = {
           type:     req.body.type
         });
 
-
         console.log('made a new user!', newUser.toJSON());
         newUser.save()
         .then(function(newUser) {
           console.log('new user added to db');
-          var newDogOrWalker = {
-            name:     req.body.name,
-            address:  req.body.address,
-            zip:      req.body.zip,
-            imgurl:   req.body.imgurl,
-            price:    req.body.price,
-            userId:   newUser.get('id')
-          };
-
-          if (newUser.get('type') === 'Dog') {
-            console.log('new user is a dog');
-            // var newDog = new Dog({
-            //   // create a new dog user following model/dog.js
-            //
-            // });
-            var newDog = new Dog(newDogOrWalker);
-            newDog.save();
-          } else {
-            console.log('new user is a walker');
-            // var newWalker = new Walker({
-            //   // create a new walker user following model/walker.js
-            //
-            // });
-            var newWalker = new Walker(newDogOrWalker);
-            newWalker.save();
+          if(req.body.type === 'dog') {
+            var newDog = new Dog({
+              name:     req.body.name,
+              address:  req.body.address,
+              zip:      req.body.zip,
+              imgurl:   req.body.imgurl,
+              price:    req.body.price,
+              userId:   newUser.get('id')
+            });
+            console.log('new user is a dog', newDog.toJSON());
+            newDog.save()
+            .then(function(newDog) {
+              console.log('new dog added to db');
+              // res.send(newUser, newDog);
+            })
+          }
+          else if (req.body.type === 'Dog Walker')  {
+            var newWalker = new Walker({
+              name:     req.body.name,
+              address:  req.body.address,
+              zip:      req.body.zip,
+              imgurl:   req.body.imgurl,
+              price:    req.body.price,
+              userId:   newUser.get('id')
+              });
+            console.log('new user is a walker', newWalker.toJSON());
+            newWalker.save()
+            .then(function(newWalker) {
+              console.log('new walker added to db');
+              // res.send(newUser, newWalker);
+            })
           }
           res.send(newUser);
         });

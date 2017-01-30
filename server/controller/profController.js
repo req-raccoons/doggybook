@@ -20,6 +20,7 @@ module.exports = {
       new User({username: username})
       .fetch()
       .then(function(user) {
+        console.log(user);
         if (!user) {
           // if !found, do... something?
           console.log('user not found!');
@@ -29,8 +30,9 @@ module.exports = {
           // if found: grab the user profile data
           Object.assign(profile, user.toJSON());
           var userId = user.get('id');
+          console.log(userId);
 
-          if (user.get('isDog') === 'Dog') {
+          if (user.get('type') === 'dog') {
             console.log('grabbing dog profile: ', userId);
             // console.log('from user model: ', user);
             new Dog({userId: userId}).fetch()
@@ -43,8 +45,10 @@ module.exports = {
               res.send(profile);
             });
           } else {
+            console.log('grabbing walker profile: ', userId);
             new Walker({userId: userId}).fetch()
             .then(function(walker) {
+              console.log(walker)
               Object.assign(profile, walker.toJSON());
             })
             .then(function() {

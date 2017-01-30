@@ -45,7 +45,7 @@ angular.module('doggyBook.services', [])
 
 .factory('Prof', function ($http, $location, $window) {
 
-  var showProf = function (userName='rj5') {
+  var showProf = function (userName='rj') {
     console.log('showProf services userName: ', userName)
     return $http({
       method: 'GET',
