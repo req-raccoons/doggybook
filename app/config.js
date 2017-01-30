@@ -28,11 +28,11 @@ db.knex.schema.hasTable('dogs')
     db.knex.schema.createTable('dogs', function(dog) {
       // structure of dog db object to be fleshed out further
       dog.increments('id').primary();
-      dog.string('name');
-      dog.string('address');
-      dog.string('zip');
-      dog.string('imgurl');
-      dog.string('price');
+      dog.string('name', 100);
+      dog.string('address', 100);
+      dog.string('zip', 100);
+      dog.string('imgurl', 100);
+      dog.string('price', 100);
       dog.integer('userId').unsigned();
       dog.foreign('userId').references('users.id');
       dog.timestamps();
@@ -48,11 +48,11 @@ db.knex.schema.hasTable('walkers')
     db.knex.schema.createTable('walkers', function(walker) {
       // structure of walker db object to be fleshed out further
       walker.increments('id').primary();
-      walker.string('name');
-      walker.string('address');
-      walker.string('zip');
-      walker.string('imgurl');
-      walker.string('price');
+      walker.string('name', 100);
+      walker.string('address', 100);
+      walker.string('zip', 100);
+      walker.string('imgurl', 100);
+      walker.string('price', 100);
       walker.integer('userId').unsigned();
       walker.foreign('userId').references('users.id');
       walker.timestamps();
