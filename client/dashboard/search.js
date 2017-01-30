@@ -51,6 +51,10 @@ angular.module('doggyBook.search', [])
     .then(function(response) {
       console.log('searchController response: ', response.data);
 
+      addressList = [];
+      response.data.forEach(userObj => addressList.push(userObj.address));
+
+
       addressList.push('345 Chambers St, New York');
 
       addressList.forEach(address => {
