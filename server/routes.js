@@ -1,11 +1,11 @@
 
 var profController = require('./controller/profController.js');
 var searchController = require('./controller/searchController.js');
-// var userController = require('./controller/userController.js');
+var userController = require('./controller/userController.js');
+// var userController = require('./handlers.js');
 
 // we can rename this later, but this is the 'controller' for users
 // userController has been commented out to accomodate this
-var userController = require('./handlers.js');
 
 module.exports = function (app, express) {
   console.log('loading routes...');

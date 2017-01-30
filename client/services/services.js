@@ -31,6 +31,7 @@ angular.module('doggyBook.services', [])
   };
 
   var signout = function () {
+    console.log('services.js signing out!');
     $window.localStorage.removeItem('com.doggyBook');
     $location.path('/signin');
   };
