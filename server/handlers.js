@@ -1,5 +1,4 @@
 // var request = require('request');
-
 var db = require('../app/config');
 // var jwt = require('jwt-simple');
 
