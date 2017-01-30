@@ -20,7 +20,7 @@ module.exports = {
       new User({username: username})
       .fetch()
       .then(function(user) {
-        console.log(user);
+
         if (!user) {
           // if !found, do... something?
           console.log('user not found!');
@@ -33,6 +33,7 @@ module.exports = {
           console.log(userId);
 
           if (user.get('type') === 'dog') {
+
             console.log('grabbing dog profile: ', userId);
             // console.log('from user model: ', user);
             new Dog({userId: userId}).fetch()

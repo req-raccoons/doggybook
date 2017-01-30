@@ -13,6 +13,7 @@ var Walkers = require('../../app/collections/walkers');
 module.exports = {
   getAllUsers: function(req, res, next) {
     console.log('getAllUsers! req.body: ', req.body);
+
     var allUsers = [];
 
     Dog.fetchAll()
@@ -27,6 +28,7 @@ module.exports = {
     });
       // IMPORTANT still need to remove password hash out of 'allUsers'
   }
+
     // if (req.body === 'Dogs') {
     //   console.log('specifically dogs!');
     //   Dogs.fetchAll()
@@ -43,4 +45,5 @@ module.exports = {
     //   console.log('searching for: ' + req.body + ' not yet implemented');
     // }
     // console.log('searching for: ' + req.body + ' not yet implemented');
+
 }

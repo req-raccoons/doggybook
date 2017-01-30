@@ -52,7 +52,6 @@ angular.module('doggyBook.search', [])
         console.log('converting address: ', address);
         geoConvertor(address);
       });
-
       $scope.results = response.data;
     })
     .catch(function(error) {

@@ -4,6 +4,7 @@ angular.module('doggyBook.profile', [])
   // userName identifies the given user
   $scope.userName;
   console.log('in profile.js ', $window)
+
   // profile object stores all of the info for the user from the db
   $scope.profile = {};
 

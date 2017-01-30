@@ -1,4 +1,5 @@
 // var request = require('request');
+
 var db = require('../app/config');
 // var jwt = require('jwt-simple');
 
@@ -113,6 +114,7 @@ module.exports = {
       }
     });
   },
+
 
   checkAuth: function (req, res, next) {
     var token = req.headers['x-access-token'];
