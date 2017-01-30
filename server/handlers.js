@@ -1,7 +1,7 @@
 // var request = require('request');
 
 var db = require('../app/config');
-// var jwt = require('jwt-simple');
+var jwt = require('jwt-simple');
 
 var User = require('../app/models/user');
 var Dog = require('../app/models/dog');

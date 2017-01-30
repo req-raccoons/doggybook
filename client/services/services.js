@@ -45,12 +45,11 @@ angular.module('doggyBook.services', [])
 
 .factory('Prof', function ($http, $location, $window) {
 
-
-  var showProf = function (userName='rj') {
+  var showProf = function (userName) {
     console.log('showProf services userName: ', userName)
     return $http({
       method: 'GET',
-      url: '/profiles/' + userName
+      url: 'api/profiles/' + userName
 
     })
     .then(function (resp) {
