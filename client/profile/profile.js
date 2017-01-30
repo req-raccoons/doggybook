@@ -10,7 +10,7 @@ angular.module('doggyBook.profile', [])
   $scope.userName = $scope.userName || 'rj';
 
   var profileRender = function () {
-    Prof.showProf()
+    Prof.showProf($scope.userName)
       // console.log('$scope.userName :', $scope.userName)
     // showProfile is a function in the Profiles factory that queries the database for a given userID
       .then(function (profData) {
