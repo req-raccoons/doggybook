@@ -36,11 +36,6 @@ angular.module('doggyBook.search', [])
       }
     });
   }
-  //
-  // for(var i=0; i<addressList.length; i++) {
-  //   geoConvertor(addressList[i]);
-  // }
-
   // the results object should store all of the results of the query; ie all users matching a given query
   // the query object will include the search parameters
   // $scope.query = {};
@@ -51,11 +46,7 @@ angular.module('doggyBook.search', [])
     .then(function(response) {
       console.log('searchController response: ', response.data);
 
-      addressList = [];
       response.data.forEach(userObj => addressList.push(userObj.address));
-
-
-      addressList.push('345 Chambers St, New York');
 
       addressList.forEach(address => {
         console.log('converting address: ', address);
