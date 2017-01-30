@@ -50,6 +50,7 @@ angular.module('doggyBook.services', [])
     return $http({
       method: 'GET',
       url: 'api/profiles/' + userName
+
     })
     .then(function (resp) {
       console.log('response data in Prof factory: ', resp);
