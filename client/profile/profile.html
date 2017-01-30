@@ -17,19 +17,19 @@
   <br />
   <div class="container">
     <div class="row">
-      <div class="col-md-2">
-        <img src={{profile.imgurl}} />
+      <div class="col-md-3">
+        <img id="profile-img" src={{profile.imgurl}} />
       </div>
 
-      <div class="col-md-10">
+      <div class="col-md-9">
         <div class="panel panel-default">
           <div class="panel-heading"><h4>User Information</h4></div>
           <div class="panel-body">
-            <ul>
-              <li>{{profile.type}}</li>
-              <li>{{profile.name}}</li>
-              <li>{{profile.address}}</li>
-              <li>{{profile.email}}</li>
+            <ul id="user-info">
+              <li>User Type: {{profile.type}}</li>
+              <li>Name: {{profile.name}}</li>
+              <li>Address: {{profile.address}}</li>
+              <li>Email: {{profile.email}}</li>
             </ul>
           </div>
         </div>
