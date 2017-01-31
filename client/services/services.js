@@ -64,7 +64,6 @@ angular.module('doggyBook.services', [])
   };
 })
 
-
 .factory('Search', function ($http, $location, $window) {
 
   var getAllUsers = function (query) {
@@ -82,23 +81,5 @@ angular.module('doggyBook.services', [])
 
   return {
     getAllUsers: getAllUsers
-  };
-})
-
-.factory('Landing', function ($http, $location, $window) {
-  var landingFunc = function () {
-    //this function should just allow for rerouting between other
-    return $http({
-      method: 'GET',
-      url: '/api/search',
-      data: query
-    })
-    .then(function (resp) {
-      return resp;
-    });
-  };
-
-  return {
-    landingFunc: landingFunc
   };
 });
