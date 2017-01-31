@@ -49,11 +49,13 @@ angular.module('doggyBook', [
   };
   return attach;
 })
-.run(function ($rootScope, $location, Auth) {
+.run(function ($rootScope, $location, $window, Auth) {
 
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
     if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
       $location.path('/signin');
     }
   });
+  console.log($window.localStorage);
+  $rootScope.isSignedIn = $window.localStorage.getItem('isSignedIn');
 });

@@ -1,6 +1,6 @@
 angular.module('doggyBook.services', [])
 
-.factory('Auth', function ($http, $location, $window) {
+.factory('Auth', function ($http, $location, $rootScope, $window) {
 
   var signin = function (user) {
     console.log('in services.js auth factory: user: ', user);
@@ -33,6 +33,8 @@ angular.module('doggyBook.services', [])
   var signout = function () {
     console.log('services.js signing out!');
     $window.localStorage.removeItem('com.doggyBook');
+    $window.localStorage.setItem('isSignedIn', false);
+    $rootScope.isSignedIn = false;
     $location.path('/signin');
   };
 

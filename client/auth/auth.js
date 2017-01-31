@@ -8,6 +8,7 @@ angular.module('doggyBook.auth', [])
     Auth.signin($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.doggyBook', token);
+        $window.localStorage.setItem('isSignedIn', true);
         $rootScope.isSignedIn = true;
         $location.path('/landing');
       })
@@ -20,6 +21,7 @@ angular.module('doggyBook.auth', [])
     Auth.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.doggyBook', token);
+        $window.localStorage.setItem('isSignedIn', true);
         $rootScope.isSignedIn = true;
         $location.path('/landing');
       })
@@ -31,6 +33,7 @@ angular.module('doggyBook.auth', [])
 
   $scope.signout = function () {
     console.log('auth.js signing out!');
+    $window.localStorage.setItem('isSignedIn', false);
     $rootScope.isSignedIn = false;
     Auth.signout();
   };
