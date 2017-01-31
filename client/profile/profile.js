@@ -10,7 +10,6 @@ angular.module('doggyBook.profile', [])
   $scope.userName = $scope.userName || 'rj';
   $scope.signout = () => {
     console.log('profile.js signing out!');
-    $rootScope.isSignedIn = false;
     Auth.signout();
   }
 
