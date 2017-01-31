@@ -1,3 +1,4 @@
+// some sample addresses to display on the map
 var addressList = ['345 Broadway, New York',
                    '875 Broadway, New York',
                    '125 8th Ave, New York',
@@ -13,8 +14,10 @@ angular.module('doggyBook.search', [])
   }
 
   $scope.markers = [];
+  // initiating a map on search.html page
   $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
+  // create markers for each address
   var createMarker = function (latlng){
     console.log('lat lng', latlng);
     var marker = new google.maps.Marker({
@@ -24,12 +27,13 @@ angular.module('doggyBook.search', [])
     $scope.markers.push(marker);
   }
 
+  // convert an address string into latitude and longitude, then put it into map by
+  // calling createMarker function
   var geoConvertor = function (addressVal) {
     $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({address: addressVal}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
-        console.log('results ', results);
         var result = results[0].geometry.location;
         console.log('result', result);
         createMarker(result);

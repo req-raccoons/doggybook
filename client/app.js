@@ -3,7 +3,6 @@ angular.module('doggyBook', [
   'doggyBook.auth',
   'doggyBook.profile',
   'doggyBook.search',
-  'doggyBook.landing',
   'ngRoute'
 ])
 
@@ -11,7 +10,6 @@ angular.module('doggyBook', [
   $routeProvider
     .when('/landing', {
       templateUrl: '/landing/landing.html',
-      controller: 'LandingController'
     })
     .when('/signin', {
       templateUrl: 'auth/signin.html',
