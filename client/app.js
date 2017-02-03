@@ -3,7 +3,6 @@ angular.module('doggyBook', [
   'doggyBook.auth',
   'doggyBook.profile',
   'doggyBook.search',
-  'doggyBook.landing',
   'ngRoute'
 ])
 
@@ -11,7 +10,6 @@ angular.module('doggyBook', [
   $routeProvider
     .when('/landing', {
       templateUrl: '/landing/landing.html',
-      controller: 'LandingController'
     })
     .when('/signin', {
       templateUrl: 'auth/signin.html',
@@ -51,11 +49,13 @@ angular.module('doggyBook', [
   };
   return attach;
 })
-.run(function ($rootScope, $location, Auth) {
+.run(function ($rootScope, $location, $window, Auth) {
 
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
     if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
       $location.path('/signin');
     }
   });
+  console.log($window.localStorage);
+  $rootScope.isSignedIn = $window.localStorage.getItem('isSignedIn');
 });

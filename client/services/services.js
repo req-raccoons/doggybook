@@ -1,6 +1,6 @@
 angular.module('doggyBook.services', [])
 
-.factory('Auth', function ($http, $location, $window) {
+.factory('Auth', function ($http, $location, $rootScope, $window) {
 
   var signin = function (user) {
     console.log('in services.js auth factory: user: ', user);
@@ -31,7 +31,10 @@ angular.module('doggyBook.services', [])
   };
 
   var signout = function () {
+    console.log('services.js signing out!');
     $window.localStorage.removeItem('com.doggyBook');
+    $window.localStorage.setItem('isSignedIn', false);
+    $rootScope.isSignedIn = false;
     $location.path('/signin');
   };
 
@@ -63,7 +66,6 @@ angular.module('doggyBook.services', [])
   };
 })
 
-
 .factory('Search', function ($http, $location, $window) {
 
   var getAllUsers = function (query) {
@@ -81,23 +83,5 @@ angular.module('doggyBook.services', [])
 
   return {
     getAllUsers: getAllUsers
-  };
-})
-
-.factory('Landing', function ($http, $location, $window) {
-  var landingFunc = function () {
-    //this function should just allow for rerouting between other
-    return $http({
-      method: 'GET',
-      url: '/api/search',
-      data: query
-    })
-    .then(function (resp) {
-      return resp;
-    });
-  };
-
-  return {
-    landingFunc: landingFunc
   };
 });
