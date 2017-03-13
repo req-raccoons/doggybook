@@ -30,9 +30,13 @@
       <div>
         <ul>
           <li ng-repeat="user in results" id="user-item">
-            Name: {{user.name}}
-            Address: {{user.address}}
-            Price: $ {{user.price}}
+            <a href="#/profiles"+"user.name">
+              <!-- <div ng-click="getProf(user.name)"> -->
+                Name: {{user.name}}
+                Address: {{user.address}}
+                Price: $ {{user.price}}
+              <!-- </div> -->
+            </a>
           </li>
         </ul>
       </div>

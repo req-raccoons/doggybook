@@ -78,9 +78,23 @@ angular.module('doggyBook.services', [])
       return resp;
     });
   };
+  var getProf = function (userName) {
+    // $scope.userName = userName
+    console.log('in services.js getProf: ', $scope);
+    console.log('getProf services userName: ', userName);
+    return $http({
+      method: 'GET',
+      url: 'api/profiles/' + userName,
+    })
+    .then(function (resp) {
+      console.log('response data in Prof factory: ', resp);
+      return resp;
+    });
+  };
 
   return {
-    getAllUsers: getAllUsers
+    getAllUsers: getAllUsers,
+    getProf: getProf
   };
 })
 

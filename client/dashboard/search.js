@@ -58,4 +58,17 @@ angular.module('doggyBook.search', [])
       console.error(error);
     });
   }
+
+  $scope.getProf = function(userName) {
+
+    Search.getProf(userName)
+      .then(function (profData) {
+        console.log('search.js line 64 profdata: ', profData);
+        $scope.profile = profData.data;
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  };
+
 });
